@@ -31,7 +31,7 @@ export default function NewListForm({ props }) {
         />
         <input
           type="text"
-          placeholder="area"
+          placeholder="price"
           onChange={handlePriceInput}
           value={price}
         />

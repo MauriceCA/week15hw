@@ -2,19 +2,29 @@ import React from "react";
 import NewListForm from "./NewListForm";
 import { Card } from "react-bootstrap";
 import { useState } from "react";
+import Row from "react-bootstrap/Row";
 
 export default function List({ listData }) {
   const [allItems, setAllItems] = useState(listData.listOfAllItems);
-  console.log(listData);
+  // console.log(listData.listOfAllItems);
+  // console.log(allItems);
   return (
-    <Card style={{ width: "18rem" }} className="m-3">
+    <Card style={{ width: "20rem" }} className="m-5">
       <Card.Body>
-        <Card.Title>{listData.listName}</Card.Title>
+        <Card.Title>
+          <h2>{listData.listName}</h2>
+        </Card.Title>
         <Card.Text>
-          Item:{" "}
+          {/* Item:{" "} */}
           {allItems.map((item, index) => (
-            <div key={index}>
-              <NewListForm item={item} />
+            <div>
+              <Row className="d-flex">
+                {item.item} {item.price}
+              </Row>
+              <div key={index}>
+                {console.log(allItems)}
+                <NewListForm item={item} />
+              </div>
             </div>
           ))}
         </Card.Text>
