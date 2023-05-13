@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 
 const ShoppingLists = () => {
   const [shoppingLists, setShoppingLists] = useState([]);
+  const [shoppingListName, setShoppingListName] = useState("");
 
   const shoppingListApi =
     "https://64092d096ecd4f9e18aa1900.mockapi.io/ShoppingList/";
@@ -48,28 +49,18 @@ const ShoppingLists = () => {
   //     })
   // })
   // }
-  // const updateLists = async (list) => {
-  //   try {
-  //     fetch(`${shoppingListApi}/${list.id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(list),
-  //     });
-  //   } catch (error) {
-  //     console.log("Error updating API:", error);
-  //   }
-  // };
 
-  async function postList(newList) {
+  async function postList() {
     try {
-      fetch(shoppingListApi, {
+      await fetch(shoppingListApi, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newList),
+        body: JSON.stringify({
+          listName: shoppingListName,
+          listOfAllItems: [],
+        }),
       });
       await getShoppingLists().then((newList) => setShoppingLists(newList));
     } catch (error) {
@@ -84,12 +75,12 @@ const ShoppingLists = () => {
         <input
           type="text"
           placeholder="New List"
-          onChange={(e) => setShoppingLists(e.target.value)}
-          value={""}
+          onChange={(e) => setShoppingListName(e.target.value)}
+          value={shoppingListName}
         />
       </form>
-      <button onClick={(e) => postList(e.target.value)}>Add New List</button>
-
+      <button onClick={() => postList()}>Add New List</button>
+      <hr />
       <Container>
         <Row>
           <Col className="d-flex flex-wrap justify-content-center">
