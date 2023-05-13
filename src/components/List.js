@@ -11,9 +11,8 @@ export default function List({ listData }) {
   // console.log(allItems);
   const updateLists = async (list) => {
     list.listName = prompt("Enter New Store Name");
-
     try {
-      fetch(
+      await fetch(
         "https://64092d096ecd4f9e18aa1900.mockapi.io/ShoppingList/" + list.id,
         {
           method: "PUT",
@@ -33,7 +32,7 @@ export default function List({ listData }) {
         <Card.Body>
           <Card.Title>
             <h2>{listData.listName}</h2>
-            <button onClick={() => updateLists(listData)}>✎ Name</button>
+            <button onClick={() => updateLists(listData)}>✎ List Name</button>
           </Card.Title>
           <Card.Text>
             {/* Item:{" "} */}
