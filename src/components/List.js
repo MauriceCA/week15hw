@@ -9,26 +9,28 @@ export default function List({ listData }) {
   // console.log(listData.listOfAllItems);
   // console.log(allItems);
   return (
-    <Card style={{ width: "20rem" }} className="m-5">
-      <Card.Body>
-        <Card.Title>
-          <h2>{listData.listName}</h2>
-        </Card.Title>
-        <Card.Text>
-          {/* Item:{" "} */}
-          {allItems.map((item, index) => (
-            <div>
-              <Row className="d-flex">
-                {item.item} {item.price}
-              </Row>
-              <div key={index}>
-                {console.log(allItems)}
-                <NewListForm item={item} />
+    <article>
+      <Card style={{ width: "20rem" }} className="m-5">
+        <Card.Body>
+          <Card.Title>
+            <h2>{listData.listName}</h2>
+          </Card.Title>
+          <Card.Text>
+            {/* Item:{" "} */}
+            {allItems.map((item, index) => (
+              <div>
+                <Row className="d-flex">
+                  {item.item} {item.price}
+                </Row>
+                <div key={index}>{console.log(allItems)}</div>
               </div>
-            </div>
-          ))}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+            ))}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <NewListForm />
+    </article>
   );
 }
+
+//item={item.item} price={item.price}

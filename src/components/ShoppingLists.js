@@ -48,10 +48,48 @@ const ShoppingLists = () => {
   //     })
   // })
   // }
+  // const updateLists = async (list) => {
+  //   try {
+  //     fetch(`${shoppingListApi}/${list.id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(list),
+  //     });
+  //   } catch (error) {
+  //     console.log("Error updating API:", error);
+  //   }
+  // };
 
+  async function postList(newList) {
+    try {
+      fetch(shoppingListApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newList),
+      });
+      await getShoppingLists().then((newList) => setShoppingLists(newList));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <article className="shopping-list">
       <h1>Shopping Lists</h1>
+
+      <form>
+        <input
+          type="text"
+          placeholder="New List"
+          onChange={(e) => setShoppingLists(e.target.value)}
+          value={""}
+        />
+      </form>
+      <button onClick={(e) => postList(e.target.value)}>Add New List</button>
+
       <Container>
         <Row>
           <Col className="d-flex flex-wrap justify-content-center">

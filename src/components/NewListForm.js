@@ -12,7 +12,12 @@ export default function NewListForm({ props }) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (item && price) {
-      props.addNewItem({ item, price });
+      const newItem = {
+        item: item,
+        price: price,
+      };
+      console.log(item);
+      props(newItem);
       setItem("");
       setPrice("");
     } else {
@@ -35,7 +40,9 @@ export default function NewListForm({ props }) {
           onChange={handlePriceInput}
           value={price}
         />
-        <button type="submit">Add Item</button>
+        <button type="submit" onClick={() => onSubmit(item, price)}>
+          Add Item
+        </button>
       </form>
     </div>
   );

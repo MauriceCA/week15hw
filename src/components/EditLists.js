@@ -1,32 +1,32 @@
-const [allLists, setAllLists] = useState();
+// const [allLists, setAllLists] = useState();
 
-export const updateLists = async (list) => {
-  try {
-    fetch(`${shoppingListApi}/${list.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(list),
-    });
-  } catch (error) {
-    console.log("Error updating API:", error);
-  }
-};
+// export const updateLists = async (list) => {
+//   try {
+//     fetch(`${shoppingListApi}/${list.id}`, {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(list),
+//     });
+//   } catch (error) {
+//     console.log("Error updating API:", error);
+//   }
+// };
 
-export async function postList(newList) {
-  try {
-    fetch(shoppingListApi, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newList),
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export async function postList(newList) {
+//   try {
+//     fetch(shoppingListApi, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(newList),
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 // const deleteItem = (itemId) => {
 //   updateLists() = {
 //     ...listOfAllItems,
